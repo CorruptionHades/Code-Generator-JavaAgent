@@ -84,7 +84,8 @@ class Program {
         Console.WriteLine("Parsing complete!");
         Console.WriteLine("------------------------------");
 
-        string classToMake = "net.minecraft.world.entity.player.Abilities";
+        Console.WriteLine("Enter class to generate: ");
+        string classToMake = Console.ReadLine();
         MappingClass mappingClass1 = getByName(classToMake);
 
         if (mappingClass1 == null) {
