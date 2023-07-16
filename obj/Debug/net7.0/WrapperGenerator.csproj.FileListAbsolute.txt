@@ -1,0 +1,15 @@
+H:\C#\WrapperGenerator\bin\Debug\net7.0\WrapperGenerator.exe
+H:\C#\WrapperGenerator\bin\Debug\net7.0\WrapperGenerator.deps.json
+H:\C#\WrapperGenerator\bin\Debug\net7.0\WrapperGenerator.runtimeconfig.json
+H:\C#\WrapperGenerator\bin\Debug\net7.0\WrapperGenerator.dll
+H:\C#\WrapperGenerator\bin\Debug\net7.0\WrapperGenerator.pdb
+H:\C#\WrapperGenerator\obj\Debug\net7.0\WrapperGenerator.csproj.AssemblyReference.cache
+H:\C#\WrapperGenerator\obj\Debug\net7.0\WrapperGenerator.GeneratedMSBuildEditorConfig.editorconfig
+H:\C#\WrapperGenerator\obj\Debug\net7.0\WrapperGenerator.AssemblyInfoInputs.cache
+H:\C#\WrapperGenerator\obj\Debug\net7.0\WrapperGenerator.AssemblyInfo.cs
+H:\C#\WrapperGenerator\obj\Debug\net7.0\WrapperGenerator.csproj.CoreCompileInputs.cache
+H:\C#\WrapperGenerator\obj\Debug\net7.0\WrapperGenerator.dll
+H:\C#\WrapperGenerator\obj\Debug\net7.0\refint\WrapperGenerator.dll
+H:\C#\WrapperGenerator\obj\Debug\net7.0\WrapperGenerator.pdb
+H:\C#\WrapperGenerator\obj\Debug\net7.0\WrapperGenerator.genruntimeconfig.cache
+H:\C#\WrapperGenerator\obj\Debug\net7.0\ref\WrapperGenerator.dll
