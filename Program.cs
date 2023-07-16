@@ -98,6 +98,8 @@ class Program {
 
         if (mappingClass1 == null) {
             Console.WriteLine("Error: class " + classToMake + " not found!");
+            Console.WriteLine("Press any key to exit.");
+            Console.ReadKey();
             return;
         }
 
@@ -117,6 +119,10 @@ class Program {
         // Create the directories
         Directory.CreateDirectory(packagePath);
         File.WriteAllText(packagePath + packageParts[packageParts.Length - 1] + ".java", classCode);
+
+        Console.WriteLine("Successfully generated Wrapper class! You can find it in the out folder.");
+        Console.WriteLine("Press any key to exit.");
+        Console.ReadKey();
     }
 
 
