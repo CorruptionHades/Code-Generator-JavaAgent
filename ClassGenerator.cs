@@ -51,22 +51,17 @@ public class ClassGenerator {
         string types = ", ";
         string invokeArgs = ", ";
 
-        if(between == "") {
-            types = "";
-            invokeArgs = "";
-        }
-
         int count = 0;
         foreach(string arg in args) {
 
             if(checkReturnType(arg)) {
 
-                if(arg.Equals(args[args.Length - 1])) {
+                if(count == args.Length - 1) { 
                         types += arg + ".class";
                     }
                     else types += arg + ".class, ";
 
-                if(arg.Equals(args[args.Length - 1])) {
+                if(count == args.Length - 1) {
                     invokeArgs += "a" + count;
                 }
                 else invokeArgs += "a" + count + ", ";
@@ -74,23 +69,23 @@ public class ClassGenerator {
             else {
                 MappingClass mappingClass = Program.getByName(arg.Trim());
                 if(mappingClass != null) {
-                    if(arg.Equals(args[args.Length - 1])) {
+                    if(count == args.Length - 1) {
                         types += "ReflectionHelper.getClass(\"" + mappingClass.ObfuscatedName + "\")";
                     }
                     else types += "ReflectionHelper.getClass(\"" + mappingClass.ObfuscatedName + "\"), ";
 
-                    if(arg.Equals(args[args.Length - 1])) {
+                    if(count == args.Length - 1) {
                         invokeArgs += "a" + count;
                     }
                     else invokeArgs += "a" + count + ", ";
                 }
                 else {
-                    if(arg.Equals(args[args.Length - 1])) {
+                    if(count == args.Length - 1) {
                         types += arg + ".class";
                     }
                     else types += arg + ".class, ";
 
-                if(arg.Equals(args[args.Length - 1])) {
+                if(count == args.Length - 1) {
                     invokeArgs += "a" + count;
                 }
                 else invokeArgs += "a" + count + ", ";
@@ -98,6 +93,11 @@ public class ClassGenerator {
             }
 
             count++;
+        }
+
+        if(between == "") {
+            types = "";
+            invokeArgs = "";
         }
 
         string methodLine = 
@@ -140,10 +140,13 @@ public class ClassGenerator {
         count = 0;
         foreach(string arg in methodArgs) {
             if(arg.Trim().Equals("")) continue;
+
+            string argName = arg.Split(" ")[1];
+
             if(arg.Contains("Object")) {
-                docs += "     * @param " + arg + " " + origMethodArgs[count] + "\n";
+                docs += "     * @param " + argName + " " + origMethodArgs[count] + "\n";
             }
-            else docs += "     * @param " + arg + "\n";
+            else docs += "     * @param " + argName + "\n";
             count++;
         }
 
@@ -163,21 +166,34 @@ public class ClassGenerator {
         string[] methodArgs = method.Substring(method.IndexOf("(") + 1, method.IndexOf(")") - method.IndexOf("(") - 1).Split(",");
         int count = 0;
         foreach(string arg in methodArgs) {
-            
+
             // check if arg is empty
             if(arg.Trim().Equals("")) continue;
 
             if(!checkReturnType(arg)) {
-                method = method.Replace(arg, (count == 0 ? "" : " ") + "Object a" + count);
+                methodArgs[count] = (count == 0 ? "" : " ") + "Object a" + count;
             }
             else {
-                method = method.Replace(arg, (count == 0 ? "" : " ") + arg + " a" + count);
+                methodArgs[count] = (count == 0 ? "" : " ") + arg + " a" + count;
             }
 
             count++;
         }
+        count = 0;
 
-        return method;
+        string methodName = method.Substring(0, method.IndexOf("("));
+        methodName += "(";
+        foreach(string arg in methodArgs) {
+            if(arg.Trim().Equals("")) continue;
+
+            methodName += arg;
+            if(!arg.Equals(methodArgs[methodArgs.Length - 1])) {
+                methodName += ",";
+            }
+        }
+        methodName += ")";
+
+        return methodName;
     }
 
     private static string generateFields(string unobfuscatedName, string obfuscatedName, string type) {
@@ -212,8 +228,7 @@ public class ClassGenerator {
             || type.Equals("boolean")
             || type.Equals("char")
             || type.Equals("void")
-            || type.Equals("String")
-            || type.Equals("String[]")
+            || type.Equals("java.lang.String[]")
             || type.Equals("int[]")
             || type.Equals("float[]")
             || type.Equals("double[]")
@@ -223,6 +238,8 @@ public class ClassGenerator {
             || type.Equals("boolean[]")
             || type.Equals("char[]")
             || type.Equals("java.util.List")
+            || type.Equals("java.lang.String")
+            || type.Contains("java.lang.")
             ) return true;
         return false;
     }

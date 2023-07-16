@@ -7,7 +7,7 @@ class Program {
 
     public static List<MappingClass> classList = new List<MappingClass>();
 
-    static void Main() {
+    public static void Main() {
         string inputPath = @"mappings/client.txt";
 
         string[] lines = File.ReadAllLines(inputPath);
@@ -28,7 +28,7 @@ class Program {
             }
             else if (line.Contains("->")) {
                 // Method
-                if(line.Contains(":")) {
+                if(line.Contains(":") || line.Contains("()")) {
                     string[] methodParts = line.Split(" -> ");
                     string obfuscatedName = methodParts[1].Trim();
 
@@ -46,11 +46,18 @@ class Program {
                         return;
                     }
 
-                    string[] types2 = types.Split(":");
-                    string returnType = types2[2].Trim();
+                    if(line.Contains(":")) {
+                        string[] types2 = types.Split(":");
+                        string returnType = types2[2].Trim();
 
-                    if(!currentClass.Methods.ContainsKey(methodName)) {
-                        currentClass.Methods[methodName] = obfuscatedName + ":" + returnType;
+                        if(!currentClass.Methods.ContainsKey(methodName)) {
+                            currentClass.Methods[methodName] = obfuscatedName + ":" + returnType;
+                        }
+                    }
+                    else {
+                        if(!currentClass.Methods.ContainsKey(methodName)) {
+                            currentClass.Methods[methodName] = obfuscatedName + ":void";
+                        }
                     }
                   
                 }
@@ -82,10 +89,11 @@ class Program {
         }
 
         Console.WriteLine("Parsing complete!");
+        Console.WriteLine("Default mappings are 1.20.1, go into the mappings folder and change the client.txt file to the version you want to use.");
         Console.WriteLine("------------------------------");
 
         Console.WriteLine("Enter class to generate: ");
-        string classToMake = Console.ReadLine();
+        string classToMake = "net.minecraft.network.chat.CommonComponents";
         MappingClass mappingClass1 = getByName(classToMake);
 
         if (mappingClass1 == null) {
@@ -100,8 +108,8 @@ class Program {
         // Write to file
 
         // Write it to file and make packages as folders
-        string[] packageParts = mappingClass1.Name.Split(".");
-        string packagePath = "out/";
+        String[] packageParts = mappingClass1.Name.Split(".");
+        String packagePath = "out/";
         for (int i = 0; i < packageParts.Length - 1; i++) {
             packagePath += packageParts[i] + "/";
         }
@@ -113,6 +121,7 @@ class Program {
 
 
     public static MappingClass getByName(string name) {
+        name = name.Replace("[", "").Replace("]", "");
         foreach (MappingClass mappingClass in classList) {
             if (mappingClass.Name == name || mappingClass.ObfuscatedName == name) {
                 return mappingClass;
