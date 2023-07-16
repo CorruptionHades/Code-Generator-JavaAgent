@@ -93,7 +93,7 @@ class Program {
         Console.WriteLine("------------------------------");
 
         Console.WriteLine("Enter class to generate: ");
-        string classToMake = "net.minecraft.network.chat.CommonComponents";
+        string classToMake = Console.ReadLine();
         MappingClass mappingClass1 = getByName(classToMake);
 
         if (mappingClass1 == null) {
