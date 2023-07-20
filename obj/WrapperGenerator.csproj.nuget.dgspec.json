@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "H:\\C#\\WrapperGenerator\\WrapperGenerator.csproj": {}
+    "H:\\C#\\JavaInjectionHelper\\WrapperGenerator.csproj": {}
   },
   "projects": {
-    "H:\\C#\\WrapperGenerator\\WrapperGenerator.csproj": {
+    "H:\\C#\\JavaInjectionHelper\\WrapperGenerator.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "H:\\C#\\WrapperGenerator\\WrapperGenerator.csproj",
+        "projectUniqueName": "H:\\C#\\JavaInjectionHelper\\WrapperGenerator.csproj",
         "projectName": "WrapperGenerator",
-        "projectPath": "H:\\C#\\WrapperGenerator\\WrapperGenerator.csproj",
+        "projectPath": "H:\\C#\\JavaInjectionHelper\\WrapperGenerator.csproj",
         "packagesPath": "C:\\Users\\CorruptionHades\\.nuget\\packages\\",
-        "outputPath": "H:\\C#\\WrapperGenerator\\obj\\",
+        "outputPath": "H:\\C#\\JavaInjectionHelper\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\CorruptionHades\\AppData\\Roaming\\NuGet\\NuGet.Config",

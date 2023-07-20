@@ -1,0 +1,2 @@
+H:\C#\JavaInjectionHelper\bin\Debug\net7.0\mappings\mappings.tiny
+H:\C#\JavaInjectionHelper\bin\Debug\net7.0\mappings\client.txt

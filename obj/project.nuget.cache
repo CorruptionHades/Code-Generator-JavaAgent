@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "eMerdRv2pAjGuf1kraYj2gHIs3UmX+ZuAk+mwohgETPCnRKMsCNd+w1kUQ+9fy4d2KHinri27YK4cfHaLgNsJw==",
+  "dgSpecHash": "cj8AZeOXAmj3YVVfotY2UhJrYnU8SZG9WQ56Wcto60dNWV2IHj/FN0HkBaFiOwnG+HO2AxKeATxB7De6185doQ==",
   "success": true,
-  "projectFilePath": "H:\\C#\\WrapperGenerator\\WrapperGenerator.csproj",
+  "projectFilePath": "H:\\C#\\JavaInjectionHelper\\WrapperGenerator.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

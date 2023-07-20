@@ -1,0 +1,6 @@
+c	egi	net/minecraft/client/sound/AlUtil
+	m	(IJJZZICDLjava/lang/String;Ljava/lang/String;)Ljava/lang/String;	a	getErrorMessage
+	m	(Ljava/lang/String;)Z	a	checkErrors
+	m	(I)Ljava/lang/String;	b	getAlcErrorMessage
+	m	(JLjava/lang/String;)Z	a	checkAlcErrors
+	m	(Ljavax/sound/sampled/AudioFormat;)I	a	getFormatId
